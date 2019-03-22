@@ -2,10 +2,10 @@
 #include <string>
 #include <vector>
 #include <ctime>
-
+using namespace std;
 const int MAX_RESP = 3;
 
-typedef std::vector<std::string> vstring;
+typedef vector<string> vstring;
 
 vstring find_match(std::string input);
 void copy(char *array[], vstring &v);
@@ -60,19 +60,19 @@ size_t nKnowledgeBaseSize = sizeof(KnowledgeBase)/sizeof(KnowledgeBase[0]);
 int main() {
     srand((unsigned) time(NULL));
 
-    std::string sInput = "";
-    std::string sResponse = "";
+    string sInput = "";
+    string sResponse = "";
 
     while(1) {
-        std::cout << ">";
-        std::getline(std::cin, sInput);
+        cout << ">";
+        getline(std::cin, sInput);
         vstring responses = find_match(sInput);
         if(sInput == "BYE") {
-            std::cout << "IT WAS NICE TALKING TO YOU USER, SEE YOU NEXTTIME!" << std::endl;
+          cout << "IT WAS NICE TALKING TO YOU USER, SEE YOU NEXTTIME!" << std::endl;
             break;
         }
         else if(responses.size() == 0)  {
-            std::cout << "I'M NOT SURE IF I  UNDERSTAND WHAT YOU  ARE TALKING ABOUT." << std::endl;
+            cout << "I'M NOT SURE IF I  UNDERSTAND WHAT YOU  ARE TALKING ABOUT." << std::endl;
         }
         else {
             int nSelection = rand()  % MAX_RESP;
@@ -88,7 +88,7 @@ int main() {
 vstring find_match(std::string  input) {
     vstring result;
     for(int i = 0; i < nKnowledgeBaseSize;  ++i) {
-        if(std::string(KnowledgeBase[i].input) == input) {
+        if(string(KnowledgeBase[i].input) == input) {
             copy(KnowledgeBase[i].responses, result);
             return result;
         }
